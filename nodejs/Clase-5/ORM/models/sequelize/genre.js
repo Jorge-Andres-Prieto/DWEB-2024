@@ -22,7 +22,7 @@ Genre.init({
   timestamps: false
 });
 
-Movie.belongsToMany(Genre, { through: 'movie_genres', foreignKey: 'movie_id' });
-Genre.belongsToMany(Movie, { through: 'movie_genres', foreignKey: 'genre_id' });
+Movie.belongsToMany(Genre, { through: 'movie_genres', foreignKey: 'movie_id', timestamps: false });
+Genre.belongsToMany(Movie, { through: 'movie_genres', foreignKey: 'genre_id', timestamps: false });
 
 export default Genre;

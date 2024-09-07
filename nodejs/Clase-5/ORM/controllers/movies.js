@@ -1,8 +1,8 @@
 
 // import { MovieModel } from '../models/local-file-system/movie.js'
 // import { MovieModel } from '../models/mongodb/starter.js'
-// import { MovieModel } from '../models/sql/movie.js'
-import { MovieModel } from '../models/sequelize/movie-model.js'
+import { MovieModel } from '../models/sql/movie.js'
+// import { MovieModel } from '../models/sequelize-start/movie-model.js'
 import { validateMovie, validatePartialMovie } from '../schemas/movies.js'
 
 export class MovieController {

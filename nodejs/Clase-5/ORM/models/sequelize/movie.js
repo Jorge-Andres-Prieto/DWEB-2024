@@ -5,10 +5,13 @@ class Movie extends Model {}
 
 Movie.init({
   id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
+    type: DataTypes.BINARY(16),
     allowNull: false,
     primaryKey: true,
+    get() {
+      const rawValue = this.getDataValue('id');
+      return rawValue ? rawValue.toString('hex').match(/.{1,8}/g).join('-') : null;
+    }
   },
   title: {
     type: DataTypes.STRING,
