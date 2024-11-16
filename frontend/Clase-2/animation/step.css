@@ -1,0 +1,15 @@
+.bernard {
+    width: 112px;
+    height: 156px;
+    border: 4px solid blue;
+    background-image: url("bernard-bernoulli.png");
+    animation: walk 5s linear infinite;
+  }
+  
+  @keyframes walk {
+    to { background-position: -672px; }
+  }
+
+  /*1. Steps y cambio velocidad
+  /*2. Move con translate
+  /*3. Mirror con scale
