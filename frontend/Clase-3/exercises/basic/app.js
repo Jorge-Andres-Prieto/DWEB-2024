@@ -9,14 +9,16 @@
 
 // // Y QUÉ PASA CON VAR?
 
-// var saludar = "hey, hola";
-// var tiempos = 4;
+let saludar = "hey, hola";
+let tiempos = 4;
+const peras = 4;
 
-// if (tiempos > 3) {
-//     var saludar = "dice Hola tambien"; 
-// }
+if (tiempos > 3) {
+    console.log(saludar);
+   
+}
 
-// console.log(saludar) // "dice Hola tambien"
+console.log(saludar) // "dice Hola tambien"
 
 // if (tiempos > 3) {
 //     let hola = "dice Hola tambien";
@@ -26,8 +28,9 @@
 
 //Un Ejemplo de Hoisting
 
-// console.log(clase);
 
-// let clase = "Muy muy divertida";
+console.log(clase);
+
+var clase = "Muy muy divertida";
 
 // Métodos de String
