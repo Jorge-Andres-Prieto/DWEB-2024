@@ -7,7 +7,6 @@
 // ====
 // !=
 // !==
-
 console.log(2 > 3);
 console.log(3 >= 3);
 
@@ -34,22 +33,29 @@ console.log(3 >= 3);
 
 // //Operadores lógicos
 
-// console.log(0 && 'una lechuza');
-// console.log(0 || 'una lechuza');
-// console.log(!'una lechuza');
+console.log(0 && 'una lechuza');
+console.log(0 || 'una lechuza');
+console.log(!'una lechuza');
 
 // //Consultar switch
 
 // //Operador ternario
 
-// if (5 > 2) {
-//     console.log('UVA');
-// } else {
-//     console.log('Manchana');
-// }
+if (5 > 2) {
+    console.log('UVA');
+} else {
+    console.log('Manchana');
+}
 
-// const condicionTernaria = 5 > 2 ? 'UVA' : 'Manchana';
-// console.log(condicionTernaria);
+const condicionTernaria = 5 > 2 ? 'UVA' : 'Manchana';
+console.log(condicionTernaria);
+
+//falsey values
+
+//nullish
+
+let condicion = 100 ?? '3';
+console.log(condicion);
 
 //Ciclos de forma breve
 
@@ -57,15 +63,15 @@ console.log(3 >= 3);
 //     console.log(i);
 // }
 
-// let magicNumber;
+let magicNumber;
 
-// while(magicNumber !== 77) {
-//     magicNumber = Number(prompt('Adivina el número que estoy pensando'));
-//     if (magicNumber === 77) {
-//         alert('Cómo lo adivinaste ?')
-//     } else if (magicNumber < 77) {
-//         alert('Mayor')
-//     } else {
-//         alert('Menor')
-//     }
-// }
+while(magicNumber !== 77) {
+    magicNumber = Number(prompt('Adivina el número que estoy pensando'));
+    if (magicNumber === 77) {
+        alert('Cómo lo adivinaste ?')
+    } else if (magicNumber < 77) {
+        alert('Mayor')
+    } else {
+        alert('Menor')
+    }
+}
