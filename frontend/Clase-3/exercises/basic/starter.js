@@ -31,7 +31,7 @@ console.log(pokemon);
 
 // //eliminar espacios
 
-pokemon = pokemon.trim();
+pokemon = pokemon;
 
 console.log(pokemon.replace('cyn', '*'));
 console.log(pokemon.slice(0, 7));

@@ -1,56 +1,76 @@
 // // //FUNCIONES
 
-// // function saludo(saludo) {
-// //     console.log(saludo);
-// //     return 9;
-// // }
+function saludo(saludo) {
+    console.log(saludo);
+    return 9;
+}
 
-// // console.log(saludo('Buenos días estrellitas'));
 
-// // function sumar(x, y) {
-// //     if (typeof x !== 'number' || typeof y !== 'number') {
-// //         return 'No se puede sumar';
-// //     }
-// //     return x + y;
-// // }
+console.log(saludo('Buenos días estrellitas'));
 
-// // console.log(sumar(1, 3));
+function sumar(x, y) {
+    if (typeof x !== 'number' || typeof y !== 'number') {
+        return 'No se puede sumar';
+    }
+    return x + y;
+}
+
+console.log(sumar('1', 3));
 
 // // //Scope
 
 // // //Lexical Scope
 
-// // function bankRobbery() {
-// //     const heroes = ['Batman', 'Chapulin', 'Rey Misterio'];
-// //     return function cryForHelp() {
-// //         for (let hero of heroes) {
-// //             console.log(`HELP ${hero}`);
-// //         }
-// //     }
-// // }
+function bankRobbery() {
+    const heroes = ['Batman', 'Chapulin', 'Rey Misterio'];
+    return function cryForHelp() {
+        for (let hero of heroes) {
+            console.log(`HELP ${hero}`);
+        }
+    }
+}
 
-// // bankRobbery()();
+bankRobbery()();
 
-// // //Function expressions
+const objeto = {
+    nombre: 'Rey Misteriooooo',
+    edad: 45,
+    pelea: function (lucha) {
+        console.log(`${this.nombre} pelea`)
+    }
+}
 
-// // const square = function(num) {
-// //     return num ** 2;
-// // }
+objeto.pelea();
 
-// // console.log(square(10));
+//formas de forzar el contexto
+
+const otroObjeto = {
+    edad: 53
+}
+
+objeto.pelea.apply(otroObjeto);
+
+
+//Function expressions
+
+const square = function(num) {
+    return num ** 2;
+}
+
+console.log(square(10));
 
 // // //THIS
 
-// // this.a = 40;
-// // function alpha() {
-// //     this.b = 90;
-// //     console.log(this);
-// // }
+this.a = 40;
+function alpha() {
+    this.b = 90;
+    console.log(this);
+}
 
 
 
-// // alpha();
-
+alpha();
+console.log(this.b);
 
 // const objeto = {
 //     value: 2,
@@ -63,15 +83,27 @@
 
 // //THIS
 
-// const object2 = {
-//     message: 'Hello, World!'
-// };
+const object2 = {
+    message: 'Hello, World!'
+};
 
-// function logMessage() {
-//     console.log(this.message); // "Hello, World!"
-// }
 
-// logMessage();
+//Optional chaining
+
+function logMessage() {
+    // this.object == undefined
+    // if (this.object2) {
+    //     console.log(this.object.message); // "Hello, World!"
+    // } else {
+    //     console.log('A pensar');
+    // }
+
+    console.log(this.object2?.message);
+}
+
+logMessage();
+
+
 
 // // Cambiar contextos
 
@@ -90,127 +122,131 @@
 // //High order functions
 // //Funciones que trabajan con otras funciones (reciben o retornan)
 
-// const func1 = function(a, b) {
+const func1 = function(a, b) {
+    return a + b
+}
+
+function maxValue(a, b, c, func) {
+    return a > func(b, c)
+};
+
+console.log(maxValue(5,2,9, func1));
+
+
+//Arrow functions y Callbacks
+
+// const func2 = (a,b) => {
+//     console.log('hola');
 //     return a + b
 // }
 
-// function maxValue(a, b, c, func) {
-//     return a > func(b, c)
-// };
+const func2 = (a,b) => a + b;
+console.log(maxValue(5,2,9, func2));
 
-// console.log(maxValue(5,2,9, func1));
+const object = {
+    who: 'Guillermo',
 
+    saludar() {
+        console.log(this);
+    },
 
-// //Arrow functions y Callbacks
+    despedir: () => console.log(this)
+};
 
-// const func2 = (a,b) => a + b;
-
-// console.log(maxValue(5,2,9, func2));
-
-// const object = {
-//     who: 'Guillermo',
-
-//     saludar() {
-//         console.log(this);
-//     },
-
-//     despedir: () => console.log(this)
-// };
-
-// console.log(object.saludar());
-// console.log(object.despedir());
+object.saludar();
+object.despedir();
 
 //forEach, map, filter
 
-const movies = [
-    {
-        title: 'El señor de los anillos',
-        score: 78
-    },
-    {
-        title: 'Star wars',
-        score: 82
-    },
-    {
-        title: 'Spiderman 2',
-        score: 90
-    },
-    {
-        title: 'El Paseo 5',
-        score: 100
-    },
-]
+// const movies = [
+//     {
+//         title: 'El señor de los anillos',
+//         score: 78
+//     },
+//     {
+//         title: 'Star wars',
+//         score: 82
+//     },
+//     {
+//         title: 'Spiderman 2',
+//         score: 90
+//     },
+//     {
+//         title: 'El Paseo 5',
+//         score: 100
+//     },
+// ]
 
-const funcionFiltrado = a => a.includes('El')
+// const funcionFiltrado = a => a.includes('El')
 
-function filtrarPeliculas(arreglo, funcFiltrado) {
-    const arregloFiltrado = [];
-    for (let elemento of arreglo) {
-        if (funcFiltrado(elemento.title)) {
-            arregloFiltrado.push(elemento);
-        }
-    }
-    return arregloFiltrado;
-}
+// function filtrarPeliculas(arreglo, funcFiltrado) {
+//     const arregloFiltrado = [];
+//     for (let elemento of arreglo) {
+//         if (funcFiltrado(elemento.title)) {
+//             arregloFiltrado.push(elemento);
+//         }
+//     }
+//     return arregloFiltrado;
+// }
 
-console.log(filtrarPeliculas(movies, funcionFiltrado));
+// console.log(filtrarPeliculas(movies, funcionFiltrado));
 
-//filter
+// //filter
 
-console.log(movies.filter(pelicula => funcionFiltrado(pelicula.title)));
+// console.log(movies.filter(pelicula => funcionFiltrado(pelicula.title)));
 
-//forEach
+// //forEach
 
-movies.forEach(movie => console.log(`El puntaje de esta película es: ${movie.score}`));
+// movies.forEach(movie => console.log(`El puntaje de esta película es: ${movie.score}`));
 
-//map
+// //map
 
-console.log(movies.map(movie => movie.score))
+// console.log(movies.map(movie => movie.score))
 
 
 
-//setTimeout, setInterval
+// //setTimeout, setInterval
 
-//every, some
+// //every, some
 
-console.log(movies.some(pelicula => funcionFiltrado(pelicula.title)));
-console.log(movies.every(pelicula => funcionFiltrado(pelicula.title)));
+// console.log(movies.some(pelicula => funcionFiltrado(pelicula.title)));
+// console.log(movies.every(pelicula => funcionFiltrado(pelicula.title)));
 
-//reduce: Reduce el arreglo a un solo valor:
+// //reduce: Reduce el arreglo a un solo valor:
 
-const scores = movies.map(movie => movie.score);
+// const scores = movies.map(movie => movie.score);
 
-//suma
+// //suma
 
-console.log(scores.reduce((total, curr) => {
-    console.log(`Valor acumulado: ${total}`);
-    console.log(`Valor actual: ${curr}`);
+// console.log(scores.reduce((total, curr) => {
+//     console.log(`Valor acumulado: ${total}`);
+//     console.log(`Valor actual: ${curr}`);
 
-    return total + curr;
-}));
+//     return total + curr;
+// }));
 
-// máximo de un arreglo
+// // máximo de un arreglo
 
-const numeroMaximo = scores.reduce((numMax, numero) => {
-    if (numero > numMax) {
-        numMax = numero;
-    }
+// const numeroMaximo = scores.reduce((numMax, numero) => {
+//     if (numero > numMax) {
+//         numMax = numero;
+//     }
 
-    return numMax
-})
+//     return numMax
+// })
 
-console.log(numeroMaximo);
+// console.log(numeroMaximo);
 
-// Contador
+// // Contador
 
-const  frutas  = ["manzana", "banano", "limón", "manzana", "limón", "coco", "banano", "limón"];
+// const  frutas  = ["manzana", "banano", "limón", "manzana", "limón", "coco", "banano", "limón"];
 
-const contador = frutas.reduce((acumulador, fruta) => {
-    if(!Object.keys(acumulador).includes(fruta)) {
-        acumulador[fruta] = 0;
-    }
-    acumulador[fruta]++;
-    return acumulador;
-}, {})
+// const contador = frutas.reduce((acumulador, fruta) => {
+//     if(!Object.keys(acumulador).includes(fruta)) {
+//         acumulador[fruta] = 0;
+//     }
+//     acumulador[fruta]++;
+//     return acumulador;
+// }, {})
 
-console.log(contador);
+// console.log(contador);
