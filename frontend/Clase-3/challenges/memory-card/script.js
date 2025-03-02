@@ -11,7 +11,7 @@ let firstCard = null;
 let secondCard = null;
 let isFlipping = false;
 
-// Lista de imágenes para las tarjetas
+
 const items = [
   { name: "bee", image: "assets/bee.png" },
   { name: "crocodile", image: "assets/crocodile.png" },
@@ -27,13 +27,13 @@ const items = [
   { name: "toucan", image: "assets/toucan.png" },
 ];
 
-// Variables de tiempo y movimientos
+
 let seconds = 0,
     minutes = 0;
 let movesCount = 0,
     winCount = 0;
 
-// Función para el temporizador
+
 const timeGenerator = () => {
   seconds += 1;
   if (seconds >= 60) {
@@ -45,13 +45,13 @@ const timeGenerator = () => {
   timeValue.innerHTML = `<span>Tiempo:</span> ${minutesValue}:${secondsValue}`;
 };
 
-// Función para contar los movimientos
+
 const movesCounter = () => {
   movesCount += 1;
   moves.innerHTML = `<span>Pasos:</span> ${movesCount}`;
 };
 
-// Función para seleccionar tarjetas aleatorias y duplicarlas
+
 const generateRandom = (size = 4) => {
   let tempArray = [...items];
   let cardValues = [];
@@ -65,12 +65,11 @@ const generateRandom = (size = 4) => {
   return cardValues;
 };
 
-// Función para barajar el arreglo de tarjetas
 const shuffleCards = (array) => {
   return array.sort(() => Math.random() - 0.5);
 };
 
-// Función para generar la cuadrícula del juego
+
 const matrixGenerator = (cardValues, size = 4) => {
   gameContainer.innerHTML = "";
   cardValues = shuffleCards([...cardValues, ...cardValues]);
@@ -133,7 +132,6 @@ const matrixGenerator = (cardValues, size = 4) => {
   });
 };
 
-// Iniciar el juego
 startButton.addEventListener("click", () => {
   movesCount = 0;
   seconds = 0;
@@ -148,7 +146,7 @@ startButton.addEventListener("click", () => {
   initializer();
 });
 
-// Detener el juego
+
 const stopGame = () => {
   clearInterval(interval);
   controls.classList.remove("hide");
@@ -156,7 +154,7 @@ const stopGame = () => {
   startButton.classList.remove("hide");
 };
 
-// Función para inicializar el juego
+
 const initializer = () => {
   result.innerText = "";
   winCount = 0;
@@ -164,5 +162,5 @@ const initializer = () => {
   matrixGenerator(cardValues);
 };
 
-// Evento para detener el juego manualmente
+
 stopButton.addEventListener("click", stopGame);
